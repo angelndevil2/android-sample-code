@@ -126,6 +126,13 @@ public class TestDb {
     }
 
     public Cursor getNames() { return query(null, null, PROJECTION); }
+    public Cursor getNames(String name) {
+        return query(
+            NAME + " like '%" + name + "%'",
+            null,
+            PROJECTION
+        );
+    }
 
     public Cursor query(String selection, String[] selectionArgs, String[] columns, String order) {
         SQLiteQueryBuilder builder = new SQLiteQueryBuilder();

@@ -13,7 +13,8 @@
         android:id="@+id/inputSearch"
         android:hint="@string/name_filter"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:inputType="text" />
 
     <!-- A RecyclerView with some commonly used attributes -->
     <android.support.v7.widget.RecyclerView
