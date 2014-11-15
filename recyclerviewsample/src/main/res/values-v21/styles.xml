@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2014. AnD all rights reserved.
+  -->
+
+<resources>
+    <style name="AppTheme" parent="android:Theme.Material.Light">
+    </style>
+</resources>
