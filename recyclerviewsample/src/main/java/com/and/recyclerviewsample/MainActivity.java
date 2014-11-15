@@ -4,18 +4,36 @@
 
 package com.and.recyclerviewsample;
 
+import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
 public class MainActivity extends ActionBarActivity {
+
+    NameRecyclerAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // 1. get RecyclerView from layout
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycle_list);
+        // 2. create LayoutManager
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        // 3. plug in LayoutManager to RecyclerView
+        recyclerView.setLayoutManager(layoutManager);
+        // 3. create adapter
+        mAdapter = new NameRecyclerAdapter();
+        // 4. plug in Adapter to RecyclerView
+        recyclerView.setAdapter(mAdapter);
+        // 5. load test db data asynchronously
+        new LoadTestDbTask().execute(this);
     }
 
 
@@ -39,5 +57,46 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private class LoadTestDbTask extends AsyncTask<Context, Void, TestDb> {
+
+        /**
+         * Override this method to perform a computation on a background thread. The
+         * specified parameters are the parameters passed to {@link #execute}
+         * by the caller of this task.
+         * <p/>
+         * This method can call {@link #publishProgress} to publish updates
+         * on the UI thread.
+         *
+         * @param params The parameters of the task.
+         * @return A result, defined by the subclass of this task.
+         * @see #onPreExecute()
+         * @see #onPostExecute
+         * @see #publishProgress
+         */
+        @Override
+        protected TestDb doInBackground(Context... params) {
+            return new TestDb(params[0]);
+        }
+
+        /**
+         * <p>Runs on the UI thread after {@link #doInBackground}. The
+         * specified result is the value returned by {@link #doInBackground}.</p>
+         * <p/>
+         * <p>This method won't be invoked if the task was cancelled.</p>
+         *
+         * @param testDb The result of the operation computed by {@link #doInBackground}.
+         * @see #onPreExecute
+         * @see #doInBackground
+         * @see #onCancelled(Object)
+         */
+        @Override
+        protected void onPostExecute(TestDb testDb) {
+            super.onPostExecute(testDb);
+
+            mAdapter.setDataSet(testDb.getNames());
+            mAdapter.notifyDataSetChanged();
+        }
     }
 }
