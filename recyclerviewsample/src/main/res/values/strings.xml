@@ -7,5 +7,6 @@
 
     <string name="app_name">RecyclerViewSample</string>
     <string name="action_settings">Settings</string>
+    <string name="name_filter">enter name for filtering</string>
 
 </resources>
