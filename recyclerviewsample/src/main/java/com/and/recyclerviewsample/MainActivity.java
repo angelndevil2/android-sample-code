@@ -30,8 +30,9 @@ public class MainActivity extends ActionBarActivity {
         mAdapter = new NameRecyclerAdapter();
         // 4. plug in Adapter to RecyclerView
         recyclerView.setAdapter(mAdapter);
-        // 5. load test db data asynchronously
-        new LoadTestDbTask().execute();
+
+        // add decoration
+        recyclerView.addItemDecoration(new NameItemDecoration());
 
         mNameFilter = (EditText) findViewById(R.id.inputSearch);
 
@@ -45,6 +46,9 @@ public class MainActivity extends ActionBarActivity {
         nameFilterWatcher.setListChanger(nameListChanger);
 
         mNameFilter.addTextChangedListener(nameFilterWatcher);
+
+        // 5. load test db data asynchronously
+        new LoadTestDbTask().execute();
     }
 
 
