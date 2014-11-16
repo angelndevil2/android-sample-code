@@ -1,14 +1,9 @@
-/*
- * Copyright (c) 2014. AnD all rights reserved.
- */
-
 package com.and.recyclerviewsample;
 
 import android.text.Editable;
 import android.text.TextWatcher;
 
 /**
- * Created by k on 14. 11. 15.
  *
  * TextWatcher for test DB Name filtering
  */

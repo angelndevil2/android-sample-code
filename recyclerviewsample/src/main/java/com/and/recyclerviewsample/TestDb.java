@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2014. AnD all rights reserved.
- */
-
 package com.and.recyclerviewsample;
 
 import android.content.ContentValues;
@@ -20,7 +16,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 /**
- * Created by k on 14. 11. 15.
  *
  * TEST DB Helper
  */

@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2014. AnD all rights reserved.
- */
-
 package com.and.recyclerviewsample;
 
 import android.database.Cursor;

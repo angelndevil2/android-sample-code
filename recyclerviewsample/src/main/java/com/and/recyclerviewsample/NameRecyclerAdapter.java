@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2014. AnD all rights reserved.
- */
-
 package com.and.recyclerviewsample;
 
 import android.database.Cursor;
@@ -10,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 /**
- * Created by k on 14. 11. 15.
  *
  * Recycler Adapter for TestDB
  *
